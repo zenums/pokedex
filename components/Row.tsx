@@ -3,9 +3,9 @@ import { StyleSheet, View, ViewStyle } from "react-native";
 type Props = {
   children: React.ReactNode;
   verticalPosition: "flex-start" | "center" | "flex-end";
-  horizontalPosition: "flex-start" | "center" | "flex-end";
+  horizontalPosition: "flex-start" | "center" | "flex-end" | "space-between";
   gap?: number;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
 };
 
 export default function Row({

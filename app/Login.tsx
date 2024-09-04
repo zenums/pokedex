@@ -4,7 +4,7 @@ import { Image } from "react-native";
 import Column from "@/components/Column";
 import globalStyles from "@/utils/styles";
 import Button from "@/components/Button";
-import Content from "@/features/onBoarding/content";
+import Content from "@/features/onBoarding/Content";
 import Row from "@/components/Row";
 import { useThemeColors } from "@/hooks/useThemeColors";
 

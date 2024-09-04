@@ -6,7 +6,7 @@ import globalStyles from "@/utils/styles";
 import Button from "@/components/Button";
 import Bulle from "@/features/onBoarding/Bulle";
 import Row from "@/components/Row";
-import Content from "@/features/onBoarding/content";
+import Content from "@/features/onBoarding/Content";
 
 export default function Onboarding() {
   const [currentPage, setCurrentPage] = useState(0);
