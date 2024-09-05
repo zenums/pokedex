@@ -18,16 +18,20 @@ export const useFetchQuery = (path: string, key: string) => {
 export const useInfiniteFetchQuery = (path: string, key: string) => {
   return useInfiniteQuery({
     queryKey: [key],
-    initialPageParam : endPoint + path,
+    initialPageParam: endPoint + path,
     queryFn: async ({ pageParam }) => {
       const response = await fetch(pageParam);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json();
+      const data = await response.json();
+      return data;
     },
     getNextPageParam: (lastPage) => {
-      return lastPage.next ? lastPage : undefined;
+      if ("next" in lastPage) {
+        return lastPage.next;
+      }
+      return null;
     },
   });
-}
+};

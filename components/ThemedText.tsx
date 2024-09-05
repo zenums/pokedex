@@ -1,7 +1,7 @@
 import { useThemeColors } from "@/hooks/useThemeColors";
 import { Text, StyleSheet } from "react-native";
 import { Colors } from "@/constants/Colors";
-import * as Font from 'expo-font';
+import * as Font from "expo-font";
 
 type Props = {
   variant: keyof typeof styles;
@@ -21,11 +21,7 @@ export default function ThemedText({
 
   return (
     <Text
-      style={[
-        styles[variant ?? "headline"],
-        { color: colors[color ?? "Vermelho"] },
-        style,
-      ]}
+      style={[styles[variant ?? "headline"], { color: colors[color] }, style]}
       {...rest}
     >
       {children}
@@ -37,18 +33,22 @@ const styles = StyleSheet.create({
   headline: {
     fontSize: 26,
     lineHeight: 35,
-    fontFamily: 'BergenText-Bold',
+    fontFamily: "BergenText-Bold",
   },
   body2: {
     fontSize: 26,
-    fontFamily: 'BergenText-SemiBold',
+    fontFamily: "BergenText-SemiBold",
   },
   body3: {
+    fontSize: 23,
+    fontFamily: "BergenText-SemiBold",
+  },
+  body4: {
     fontSize: 18,
-    fontFamily: 'BergenText-SemiBold',
+    fontFamily: "BergenText-SemiBold",
   },
   text: {
     fontSize: 14,
-    fontFamily: 'BergenText-Regular',
+    fontFamily: "BergenText-Regular",
   },
 });

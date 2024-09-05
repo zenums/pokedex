@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import icons from "@/constants/icons";
+import { icons } from "@/constants/icons";
 import { typesPokemon } from "@/utils/types/pokemon";
 import Row from "./Row";
 import ThemedText from "./ThemedText";
@@ -15,10 +15,10 @@ export default function Tag({ name, color }: Props) {
 
   return (
     <Row
-      style={[styles.tag, { backgroundColor: `rgba(${color}, 0.1)` }]}
+      style={[styles.tag, { backgroundColor: `rgba(${color}, 1)` }]}
       verticalPosition={"center"}
       horizontalPosition={"center"}
-      gap={10}
+      gap={6}
     >
       <View style={[styles.blocIcon]}>
         {iconSource && (
@@ -36,9 +36,8 @@ const styles = StyleSheet.create({
   tag: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 7,
+    padding: 6,
     borderRadius: 999,
-    marginRight: 5,
   },
   blocIcon: {
     justifyContent: "center",

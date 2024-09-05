@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
-import { StyleSheet, FlatList, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet, FlatList, ActivityIndicator } from "react-native";
 import PokemonCard from "@/components/PokemonCard";
 import { useFetchQuery } from "@/hooks/useFecthQuery";
-import { getPokemonId } from "@/utils/pokemon";
+import { getNumPokemon, getPokemonId } from "@/utils/pokemon";
 import { Pokemon } from "@/utils/types/pokemon";
+import globalStyles from "@/utils/styles";
+import SearchBar from "@/components/SearchBar";
+import Column from "@/components/Column";
+import { useThemeColors } from "@/hooks/useThemeColors";
+import { SafeAreaProvider,SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
+  const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+  const { data, isFetching } = useFetchQuery("pokemon?limit=20", "pokemon");
 
-  const { data } = useFetchQuery("pokemon", "pokemon");
+  const colors = useThemeColors();
 
   useEffect(() => {
     const fetchPokemonWithTypes = async () => {
@@ -22,6 +30,7 @@ export default function Home() {
           return {
             name: item.name,
             id: getPokemonId(item.url),
+            number: getNumPokemon(item.url),
             url: item.url,
             types: details.types.map(
               (type: { type: { name: string } }) => type.type.name
@@ -31,35 +40,78 @@ export default function Home() {
       );
 
       setPokemon(pokemonWithTypes);
+      setFilteredPokemon(pokemonWithTypes);
     };
-
     fetchPokemonWithTypes();
   }, [data]);
 
+  const handleImageLoad = () => {
+    setImagesLoaded((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    if (imagesLoaded === filteredPokemon.length) {
+      setAllImagesLoaded(true);
+      console.log("All images loaded");
+    }
+  }, [imagesLoaded, filteredPokemon]);
+
+  const handleSearch = (searchText: string | number) => {
+    if (searchText === "") {
+      setFilteredPokemon(pokemon);
+      return;
+    }
+
+    const filteredData = pokemon.filter(
+      (p: Pokemon) =>
+        (typeof searchText === "string" &&
+          p.name.toLowerCase().includes(searchText.toLowerCase())) ||
+        p.id.toString().includes(searchText.toString())
+    );
+
+    setFilteredPokemon(filteredData);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        contentContainerStyle={styles.list}
-        data={pokemon}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <PokemonCard
-            name={item.name}
-            id={item.id}
-            types={item.types}
-            url={item.url}
+    <SafeAreaProvider>
+      <SafeAreaView style={[globalStyles.safeArea]}>
+        <Column
+          verticalPosition="flex-start"
+          horizontalPosition="center"
+          gap={35}
+          style={{ flex: 1 }}
+        >
+          <SearchBar onSearch={handleSearch} />
+          <FlatList
+            contentContainerStyle={styles.list}
+            data={filteredPokemon}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <PokemonCard
+                name={item.name}
+                id={item.id}
+                number={item.number}
+                types={item.types}
+                url={item.url}
+                onImageLoad={handleImageLoad}
+              />
+            )}
+            ListFooterComponent={
+              isFetching || !allImagesLoaded ? (
+                <ActivityIndicator color={colors.Azul} />
+              ) : null
+            }
           />
-        )}
-      />
-    </SafeAreaView>
+        </Column>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 12,
-  },
   list: {
+    flexGrow: 1,
     gap: 10,
+    paddingBottom: 20,
   },
 });

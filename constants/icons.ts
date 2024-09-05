@@ -1,7 +1,41 @@
-const icons = {
+export const icons = {
   grass: require("@/assets/icon/types/grass.png"),
   fire: require("@/assets/icon/types/fire.png"),
   water: require("@/assets/icon/types/water.png"),
+  poison: require("@/assets/icon/types/poison.png"),
+  bug: require("@/assets/icon/types/bug.png"),
+  normal: require("@/assets/icon/types/normal.png"),
+  electric: require("@/assets/icon/types/electric.png"),
+  ground: require("@/assets/icon/types/ground.png"),
+  fairy: require("@/assets/icon/types/fairy.png"),
+  fighting: require("@/assets/icon/types/fighting.png"),
+  psychic: require("@/assets/icon/types/psychic.png"),
+  rock: require("@/assets/icon/types/rock.png"),
+  steel: require("@/assets/icon/types/steel.png"),
+  ice: require("@/assets/icon/types/ice.png"),
+  ghost: require("@/assets/icon/types/ghost.png"),
+  flying: require("@/assets/icon/types/flying.png"),
+  dragon: require("@/assets/icon/types/dragon.png"),
+  dark: require("@/assets/icon/types/dark.png"),
 };
 
-export default icons;
+export const iconsOutline = {
+  grass: require("@/assets/icon/types/outlines/grass.png"),
+  fire: require("@/assets/icon/types/outlines/fire.png"),
+  water: require("@/assets/icon/types/outlines/water.png"),
+  poison: require("@/assets/icon/types/outlines/poison.png"),
+  bug: require("@/assets/icon/types/outlines/bug.png"),
+  normal: require("@/assets/icon/types/outlines/normal.png"),
+  electric: require("@/assets/icon/types/outlines/electric.png"),
+  ground: require("@/assets/icon/types/outlines/ground.png"),
+  fairy: require("@/assets/icon/types/outlines/fairy.png"),
+  fighting: require("@/assets/icon/types/outlines/fighting.png"),
+  psychic: require("@/assets/icon/types/outlines/psychic.png"),
+  rock: require("@/assets/icon/types/outlines/rock.png"),
+  steel: require("@/assets/icon/types/outlines/steel.png"),
+  ice: require("@/assets/icon/types/outlines/ice.png"),
+  ghost: require("@/assets/icon/types/outlines/ghost.png"),
+  flying: require("@/assets/icon/types/outlines/flying.png"),
+  dragon: require("@/assets/icon/types/outlines/dragon.png"),
+  dark: require("@/assets/icon/types/outlines/dark.png"),
+};

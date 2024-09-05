@@ -51,7 +51,7 @@ export default function Button({
       {...rest}
       onPress={link ? handlePress : rest.onPress}
     >
-      <ThemedText variant="body3" style={[textStyle, styleText]}>
+      <ThemedText variant="body4" style={[textStyle, styleText]}>
         {title}
       </ThemedText>
     </TouchableOpacity>

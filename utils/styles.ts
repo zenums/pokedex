@@ -1,12 +1,11 @@
-import { Link } from "expo-router";
 import { StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
   safeArea: {
-    position: "relative",
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 15,
+    gap: 10,
   },
   column: {
     flex: 1,
