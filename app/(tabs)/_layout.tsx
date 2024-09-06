@@ -1,4 +1,4 @@
-import { StyleSheet, Image, Platform } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { Tabs } from "expo-router";
 import { useThemeColors } from "@/hooks/useThemeColors";
 import ThemedText from "@/components/ThemedText";
@@ -27,7 +27,6 @@ export default function TabsLayout() {
             borderTopColor: colors["100"],
           },
         ],
-        tabBarActiveTintColor: colors.Azul,
       }}
     >
       <Tabs.Screen
@@ -96,6 +95,12 @@ export default function TabsLayout() {
             ) : (
               <Image source={settingsIconGray} style={styles.icon} />
             ),
+        }}
+      />
+      <Tabs.Screen
+        name="pokemon/[id]"
+        options={{
+          href: null,
         }}
       />
     </Tabs>

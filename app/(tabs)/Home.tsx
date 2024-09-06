@@ -8,14 +8,14 @@ import globalStyles from "@/utils/styles";
 import SearchBar from "@/components/SearchBar";
 import Column from "@/components/Column";
 import { useThemeColors } from "@/hooks/useThemeColors";
-import { SafeAreaProvider,SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function Home() {
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   const [filteredPokemon, setFilteredPokemon] = useState<Pokemon[]>([]);
   const [imagesLoaded, setImagesLoaded] = useState(0);
   const [allImagesLoaded, setAllImagesLoaded] = useState(false);
-  const { data, isFetching } = useFetchQuery("pokemon?limit=20", "pokemon");
+  const { data, isFetching } = useFetchQuery("pokemon?limit=20");
 
   const colors = useThemeColors();
 

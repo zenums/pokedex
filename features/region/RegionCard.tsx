@@ -13,16 +13,20 @@ export default function RegionCard({ name, number }: Props) {
   const imageRegion = Region[name] ?? Region.kanto;
 
   return (
-    <ImageBackground source={imageRegion} style={styles.backgroundImage}>
-      <Column verticalPosition={"center"} horizontalPosition={"flex-start"} gap={5}>
-        <ThemedText variant="body3" color={"white"}>
-          {name}
-        </ThemedText>
-        <ThemedText variant="text" color={200}>
-          {number}° Génération
-        </ThemedText>
-      </Column>
-    </ImageBackground>
+      <ImageBackground source={imageRegion} style={styles.backgroundImage}>
+        <Column
+          verticalPosition={"center"}
+          horizontalPosition={"flex-start"}
+          gap={5}
+        >
+          <ThemedText variant="body3" color={"white"} style={styles.text}>
+            {name}
+          </ThemedText>
+          <ThemedText variant="text" color={200}>
+            {number}° Génération
+          </ThemedText>
+        </Column>
+      </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
@@ -31,6 +35,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 30,
     borderRadius: 15,
-    overflow: "hidden", 
+    overflow: "hidden",
+  },
+  text: {
+    textTransform: "capitalize",
+  },
+  link: {
+    borderRadius: 15,
+    overflow: "hidden",
   },
 });

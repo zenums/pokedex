@@ -1,6 +1,11 @@
-import { StyleSheet, View, ViewStyle } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ViewStyle,
+  ViewProps,
+} from "react-native";
 
-type Props = {
+type Props = ViewProps & {
   children: React.ReactNode;
   verticalPosition: "flex-start" | "center" | "flex-end";
   horizontalPosition: "flex-start" | "center" | "flex-end" | "space-between";

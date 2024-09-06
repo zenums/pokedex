@@ -5,7 +5,7 @@ type Props = {
   verticalPosition: "flex-start" | "center" | "flex-end";
   horizontalPosition: "flex-start" | "center" | "flex-end";
   gap?: number;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
 };
 
 export default function Column({

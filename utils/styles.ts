@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 const globalStyles = StyleSheet.create({
   safeArea: {
+    width: "100%",
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 15,

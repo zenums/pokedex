@@ -27,6 +27,7 @@ export default function Content({ title, text, image }: Props) {
       <Image
         source={images[image]}
         style={styles.image}
+        resizeMode="contain"
       />
       <ThemedText variant="headline" color="black" style={globalStyles.text}>
         {title}

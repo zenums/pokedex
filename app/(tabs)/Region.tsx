@@ -8,7 +8,7 @@ import type { Region as typeRegion } from "@/utils/types/pokemon";
 import { useThemeColors } from "@/hooks/useThemeColors";
 
 export default function Region() {
-  const { data, isFetching } = useFetchQuery("region?limit=8", "region");
+  const { data, isFetching } = useFetchQuery("region?limit=8");
   const colors = useThemeColors();
 
   return (
@@ -24,7 +24,9 @@ export default function Region() {
           }: {
             item: typeRegion;
             index: number;
-          }) => <RegionCard name={item.name} number={index + 1} />}
+          }) => (
+            <RegionCard name={item.name} number={index + 1} />
+          )}
           keyExtractor={(item) => item.name}
           ListFooterComponent={
             isFetching ? <ActivityIndicator color={colors.Azul} /> : null

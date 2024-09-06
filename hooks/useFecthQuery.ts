@@ -2,15 +2,16 @@ import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 
 const endPoint = "https://pokeapi.co/api/v2/";
 
-export const useFetchQuery = (path: string, key: string) => {
+export const useFetchQuery = (path: string) => {
   return useQuery({
-    queryKey: [key],
+    queryKey: [path],
     queryFn: async () => {
       const response = await fetch(`${endPoint}${path}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-      return response.json();
+      const data = await response.json();
+      return data;
     },
   });
 };

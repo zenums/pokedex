@@ -36,11 +36,10 @@ export default function RootLayout() {
           headerShown: false,
         }}
       >
+        <Stack.Screen name="(tabs)" />
         <Stack.Screen name="Login" options={{ title: "login" }} />
         <Stack.Screen name="index" options={{ title: "onboarding" }} />
-        <Stack.Screen name="(tabs)" />
       </Stack>
     </QueryClientProvider>
   );
 }
-
