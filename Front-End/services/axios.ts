@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 
-const urlBack = "http://localhost:3000/api/";
+const urlBack = "http://172.20.10.2:3000/api/";
 
 const config: AxiosRequestConfig = {
   baseURL: urlBack,

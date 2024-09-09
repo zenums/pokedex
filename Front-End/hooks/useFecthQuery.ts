@@ -12,7 +12,6 @@ export const useFetchQuery = (path: string, options?: UseFetchQueryOptions) => {
       const response = await get(path);
       return response; 
     },
-    onSuccess: options?.onSuccess, 
   });
 };
 
